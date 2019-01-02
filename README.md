@@ -1,4 +1,4 @@
-# Mean2
+# Blog app created with MEAN stack
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 

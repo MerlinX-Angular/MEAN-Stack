@@ -1,0 +1,30 @@
+<div class="container">
+  <h3>All Posts</h3>
+  <div *ngIf="this.blogs?.length == 0">
+    No posts available
+    </div>
+  <div *ngFor="let blog of blogs | reverse | paginate: { itemsPerPage: 3, currentPage: currentPage }" class="row padding-post">
+    <div class="col-lg-4 col-md-6 col-sm-12 ">
+      <img class="img-fluid" src="{{blog?.image}}">
+    </div>
+
+    <div class="col-lg-8 col-md-6 col-sm-12 line">
+      <div class="post-title">
+        {{blog?.title}}
+      </div>
+      <p class="descript">{{blog?.description}}</p>
+      <div class="metas">
+        POSTED BY {{blog?.author}}
+      </div>
+
+      DATE {{blog?.date | timePassed}}
+      <div class="cont">
+        <button class="btn btn-primary" [routerLink]="['/home/blog/'+blog._id]">Continue reading</button>
+      </div>
+
+      <button style="margin-right: 8px;margin-bottom: 15px;" class="btn btn-success" (click)="editBlog(blog._id)">Edit</button>
+      <button style="margin-bottom: 15px;" class="btn btn-danger" (click)="deleteBlog(blog._id)">Delete</button>
+    </div>
+  </div>
+  <pagination-controls (click)="pageChange(currentPage)" (pageChange)="currentPage = $event"></pagination-controls>
+</div>
